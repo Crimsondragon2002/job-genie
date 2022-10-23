@@ -14,6 +14,7 @@ import com.example.jobgeniet1.databinding.FragmentThirdBinding;
 
 public class ThirdFragment extends Fragment {
     private FragmentThirdBinding binding;
+    //old code that used to try and be an extra failsafe in case the value for second frag didn't work
     private boolean thirding = true;
     public boolean getThirding(){
         return thirding;
@@ -22,6 +23,7 @@ public class ThirdFragment extends Fragment {
         this.thirding = third;
     }
     @Override
+    //seems to allow xml to be viewed
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
@@ -31,13 +33,15 @@ public class ThirdFragment extends Fragment {
         return binding.getRoot();
 
     }
-
+   
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         setThirding(true);
         super.onViewCreated(view, savedInstanceState);
+        //checks on if the previous button is clicked
         binding.thirdPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //uses navGraph action "Third to first fragment" to move to first fragment
                 NavHostFragment.findNavController(ThirdFragment.this)
                         .navigate(R.id.action_ThirdFragment_to_FirstFragment);
             }
@@ -47,6 +51,7 @@ public class ThirdFragment extends Fragment {
             @Override
 
             public void onClick(View view) {
+                //uses navGraph action "Third to fourth fragment" to move to fourth fragment
                 setThirding(false);
                 NavHostFragment.findNavController(ThirdFragment.this)
                         .navigate(R.id.action_ThirdFragment_to_FourthFragment);
