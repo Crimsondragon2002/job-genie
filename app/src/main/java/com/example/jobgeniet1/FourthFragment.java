@@ -38,9 +38,11 @@ public class FourthFragment extends Fragment {
         else{
             Log.d("Seconding","lost");
         }
+        //checks on the back button to see if its pressed
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // if the value seconding from getSet is true, use navgraph to go back to second fragment, else use navGraph to go back to third
                 if(checking.getSeconding()==true){
                     NavHostFragment.findNavController(FourthFragment.this)
                             .navigate(R.id.action_FourthFragment_to_SecondFragment);
